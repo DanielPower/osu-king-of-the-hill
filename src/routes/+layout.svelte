@@ -1,15 +1,15 @@
-<script>
+<script lang="ts">
+	import type { LayoutData } from './$types';
 	import Header from './Header.svelte';
 	import './styles.css';
+	export let data: LayoutData;
 </script>
 
 <div class="app">
-	<Header />
-
+	<Header user={data.user} />
 	<main>
 		<slot />
 	</main>
-
 	<footer>Made by <a href="https://osu.ppy.sh/users/10624401">CrispyUmbrella</a></footer>
 </div>
 

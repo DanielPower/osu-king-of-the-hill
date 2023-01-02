@@ -1,6 +1,8 @@
-<script>
+<script lang="ts">
 	import { page } from '$app/stores';
 	import { PUBLIC_CLIENT_ID, PUBLIC_ROOT_URL } from '$env/static/public';
+	import type { PageData } from './$types';
+	export let user: PageData['user'];
 </script>
 
 <header>
@@ -9,12 +11,26 @@
 			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 				<a href="/">Home</a>
 			</li>
-			<li>
-				<a
-					href={`https://osu.ppy.sh/oauth/authorize?client_id=${PUBLIC_CLIENT_ID}&redirect_uri=${PUBLIC_ROOT_URL}/auth&response_type=code`}
-					>Login</a
-				>
-			</li>
+			{#if user}
+				<li>
+					<a href={`${PUBLIC_ROOT_URL}/profile`}>
+						{user.username}
+						<avatar>
+							<img alt="User's avatar" src={user.avatarUrl} />
+						</avatar>
+					</a>
+				</li>
+				<li>
+					<a href={`${PUBLIC_ROOT_URL}/logout`}> Logout </a>
+				</li>
+			{:else}
+				<li>
+					<a
+						href={`https://osu.ppy.sh/oauth/authorize?client_id=${PUBLIC_CLIENT_ID}&scope=public&redirect_uri=${PUBLIC_ROOT_URL}/auth&response_type=code`}
+						>Login</a
+					>
+				</li>
+			{/if}
 		</ul>
 	</nav>
 </header>
@@ -77,5 +93,11 @@
 
 	a:hover {
 		color: var(--color-theme-1);
+	}
+
+	avatar img {
+		width: 2.5rem;
+		height: 2.5rem;
+		border-radius: 50%;
 	}
 </style>
