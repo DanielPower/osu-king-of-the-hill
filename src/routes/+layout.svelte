@@ -10,44 +10,29 @@
 		<slot />
 	</main>
 
-	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
-	</footer>
+	<footer>Made by <a href="https://osu.ppy.sh/users/10624401">CrispyUmbrella</a></footer>
 </div>
 
 <style>
 	.app {
 		display: flex;
 		flex-direction: column;
-		min-height: 100vh;
 	}
 
 	main {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		padding: 1rem;
+		padding: 1rem 1rem;
 		width: 100%;
 		max-width: 64rem;
-		margin: 0 auto;
-		box-sizing: border-box;
+		margin: 1rem auto;
+		background: var(--color-bg-1);
+		border-radius: 1rem;
 	}
 
 	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 12px;
+		margin: 0 auto;
 	}
 
 	footer a {
 		font-weight: bold;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 12px 0;
-		}
 	}
 </style>
