@@ -4,6 +4,12 @@ import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
+  const error = event.url.searchParams.get('error');
+
+  if (error) {
+    return { error };
+  }
+
   const code = event.url.searchParams.get('code');
 
   const response = await fetch('https://osu.ppy.sh/oauth/token', {
@@ -31,7 +37,7 @@ export const load: PageServerLoad = async (event) => {
     httpOnly: true,
     path: '/',
     secure: true,
-    sameSite: 'strict',
+    sameSite: 'lax',
     maxAge: parseInt(`${token.expires_in}`),
   });
 

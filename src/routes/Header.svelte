@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { PUBLIC_CLIENT_ID, PUBLIC_ROOT_URL } from '$env/static/public';
+	import { PUBLIC_ROOT_URL } from '$env/static/public';
 	import type { PageData } from './$types';
 	export let user: PageData['user'];
 </script>
@@ -25,10 +25,7 @@
 				</li>
 			{:else}
 				<li>
-					<a
-						href={`https://osu.ppy.sh/oauth/authorize?client_id=${PUBLIC_CLIENT_ID}&scope=public&redirect_uri=${PUBLIC_ROOT_URL}/auth&response_type=code`}
-						>Login</a
-					>
+					<a href={`${PUBLIC_ROOT_URL}/login`}>Login</a>
 				</li>
 			{/if}
 		</ul>

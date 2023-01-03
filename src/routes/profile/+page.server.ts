@@ -10,6 +10,5 @@ export const load: PageServerLoad = async (event) => {
     throw redirect(307, '/login');
   }
 
-
   return { user: event.locals.user };
 };
