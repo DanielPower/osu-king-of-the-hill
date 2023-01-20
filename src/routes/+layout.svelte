@@ -10,7 +10,7 @@
 	<main>
 		<slot />
 	</main>
-	<footer>Made by <a href="https://osu.ppy.sh/users/10624401">CrispyUmbrella</a></footer>
+	<footer><p>Made by <a href="https://osu.ppy.sh/users/10624401">CrispyUmbrella</a></p></footer>
 </div>
 
 <style>

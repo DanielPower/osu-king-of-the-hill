@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
 	import { PUBLIC_ROOT_URL } from '$env/static/public';
 	import type { PageData } from './$types';
@@ -21,11 +22,15 @@
 					</a>
 				</li>
 				<li>
-					<a href={`${PUBLIC_ROOT_URL}/logout`}> Logout </a>
+					<form method="POST" action="/auth?/logout" use:enhance>
+						<button>Logout</button>
+					</form>
 				</li>
 			{:else}
 				<li>
-					<a href={`${PUBLIC_ROOT_URL}/login`}>Login</a>
+					<form method="POST" action="/auth?/login" use:enhance>
+						<button>Login</button>
+					</form>
 				</li>
 			{/if}
 		</ul>
@@ -74,7 +79,8 @@
 		border-top: var(--size) solid var(--color-theme-1);
 	}
 
-	nav a {
+	nav a,
+	nav button {
 		display: flex;
 		height: 100%;
 		align-items: center;
@@ -86,6 +92,11 @@
 		letter-spacing: 0.1em;
 		text-decoration: none;
 		transition: color 0.2s linear;
+	}
+
+	nav button {
+		background: none;
+		border: none;
 	}
 
 	a:hover {

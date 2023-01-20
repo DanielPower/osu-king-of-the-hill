@@ -5,8 +5,6 @@ export const handle: Handle = async ({ event, resolve }) => {
   const { headers } = event.request;
   const cookies = parse(headers.get("cookie") ?? "");
 
-  console.log(cookies.AuthorizationToken);
-
   if (cookies.AuthorizationToken && !event.locals.user) {
     const response = await fetch('https://osu.ppy.sh/api/v2/me/osu', {
       headers: {
@@ -31,8 +29,6 @@ export const handle: Handle = async ({ event, resolve }) => {
   } else {
     event.locals.user = null;
   }
-
-  console.log(event.locals);
 
   return resolve(event);
 };
